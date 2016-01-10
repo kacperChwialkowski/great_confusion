@@ -11,9 +11,9 @@ __author__ = 'kcx'
 from numpy import  mean
 
 
-REPETITIONS = 10
+REPETITIONS = 100
 
-DIMENSION = range(50, 650, 100)
+DIMENSION = [5,100,200,300,400,500]
 SAMPLE_SIZE = 10000
 
 
@@ -31,7 +31,7 @@ def simulation(num_freq, generator, alpha):
     return rejection_rates
 
 
-def simulations(num_freq, data_generator,dim, alpha=0.05):
+def simulations(num_freq, data_generator,dim, alpha=0.01):
     join_samples = numpy.array([simulation(num_freq, data_generator, alpha) for _ in range(REPETITIONS)])
     samples = mean(join_samples, 0)
     print('dimension: ', dim, ' power: ', samples[0])
